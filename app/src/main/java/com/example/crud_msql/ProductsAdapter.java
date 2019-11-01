@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-
 import java.util.List;
 
 //import android.support.v7.widget.RecyclerView;
