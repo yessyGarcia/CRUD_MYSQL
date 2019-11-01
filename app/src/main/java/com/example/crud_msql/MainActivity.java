@@ -24,7 +24,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     private EditText et_codigo, et_descripcion, et_precio;
     private Button btn_guardar, btn_consultaCodigo, btn_consultaDescripcion, btn_eliminar, btn_actualizar;
     private TextView tv_resultado;
@@ -38,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
     String descripcion = "";
     String precio = "";
 
-    //QUITAR COMENTARIOS
-    /*MantenimientoMySQL manto = new MantenimientoMySQL();
-    Dto datos = new Dto();*/
+    MantenimientoMySQL manto = new MantenimientoMySQL();
+    Dto datos = new Dto();
 
     //Banderas para saber estados de métodos del CRUD.
     boolean estadoGuarda = false;
@@ -48,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     AlertDialog.Builder dialogo;
 
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             new android.app.AlertDialog.Builder(this)
@@ -68,12 +67,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_main2);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
@@ -81,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleMargin(0, 0, 0, 0);
         toolbar.setSubtitle("CRUD MySQL~2019");
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.mycolor));
-        toolbar.setTitle("Alba García");
+        toolbar.setTitle("Alba Garcia");
         setSupportActionBar(toolbar);
 
         ///y esto para pantalla completa (oculta incluso la barra de estado)
@@ -95,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
         btn_consultaDescripcion = (Button) findViewById(R.id.btn_consultaDescripcion);
         btn_eliminar = (Button) findViewById(R.id.btn_eliminar);
         btn_actualizar = (Button) findViewById(R.id.btn_actualizar);
-       // tv_resultado = (TextView) findViewById(R.id.tv_resultado);
+        //tv_resultado = (TextView) findViewById(R.id.tv_resultado);
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 DialogConfirmacion();
             }
         });
+
 
         /******************************************************************/
         //BLOQUE DE CÓDIGO PARA MOSTRAR DATOS DE LA BUSQUEDA//
@@ -125,8 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }catch (Exception e){
+
         }
         /******************************************************************/
+
 
 
         btn_guardar.setOnClickListener(new View.OnClickListener() {
@@ -151,11 +152,12 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     input1=true;
                 }
+
                 if (inputEt && inputEd && input1){
                     String codigo = et_codigo.getText().toString();
                     String descripcion = et_descripcion.getText().toString();
                     String precio = et_precio.getText().toString();
-                    //ARREGLAR COMENTARIO manto.guardar(MainActivity.this, codigo, descripcion, precio);
+                    manto.guardar(MainActivity.this, codigo, descripcion, precio);
 
                     /*
                     estadoGuarda = manto.guardar1(Main2Activity.this, codigo, descripcion, precio);
@@ -166,8 +168,11 @@ public class MainActivity extends AppCompatActivity {
                     }*/
 
                 }
+
+
             }
         });
+
 
         //Evento clic del botón eliminar.
         btn_eliminar.setOnClickListener(new View.OnClickListener() {
@@ -182,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(inputEt){
                     String codigo = et_codigo.getText().toString();
-                    //ARREGLAR COMENTARIO  manto.eliminar(MainActivity.this, codigo);
+                    manto.eliminar(MainActivity.this, codigo);
 
                     limpiarDatos();
                     et_codigo.requestFocus();
@@ -201,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btn_consultaCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,13 +221,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if(inputEt) {
                     String codigo = et_codigo.getText().toString();
-                    //ARREGLAR COMENTARIO manto.consultarCodigo(MainActivity.this, codigo);
+                    manto.consultarCodigo(MainActivity.this, codigo);
                     et_codigo.requestFocus();
                 }
                 //End
 
             }
         });
+
+
 
         btn_consultaDescripcion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,13 +244,15 @@ public class MainActivity extends AppCompatActivity {
                 if(inputEd){
                     String descripcion = et_descripcion.getText().toString();
                     //datos.setDescripcion(descripcion);
-                    //ARREGLAR COMENTARIO manto.consultarDescripcion(MainActivity.this, descripcion);
+                    manto.consultarDescripcion(MainActivity.this, descripcion);
                     et_descripcion.requestFocus();
                     //Hilo();
 
                 }
+
             }
         });
+
 
         btn_actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,16 +271,17 @@ public class MainActivity extends AppCompatActivity {
                     String descripcion = et_descripcion.getText().toString();
                     String precio = et_precio.getText().toString();
 
-                    //QUITAR COMENTARIOS
-                    /*datos.setCodigo(Integer.parseInt(cod));
+                    datos.setCodigo(Integer.parseInt(cod));
                     datos.setDescripcion(descripcion);
                     datos.setPrecio(Double.parseDouble(precio));
-                    manto.modificar(MainActivity.this, datos);*/
+                    manto.modificar(MainActivity.this, datos);
                     limpiarDatos();
                     et_codigo.requestFocus();
                 }
+
             }
         });
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -280,13 +291,17 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
     }
+
 
     public void limpiarDatos(){
         et_codigo.setText(null);
         et_descripcion.setText(null);
         et_precio.setText(null);
     }
+
+
 
 
     @Override
@@ -310,15 +325,23 @@ public class MainActivity extends AppCompatActivity {
             et_precio.setText(null);
             return true;
         }else if(id == R.id.action_listaArticulos){
-            //Intent spinnerActivity = new Intent(MainActivity.this, Consulta_RecyclerView.class);
-            //startActivity(spinnerActivity);
+            Intent spinnerActivity = new Intent(MainActivity.this, Consulta_RecyclerView.class);
+            startActivity(spinnerActivity);
             return true;
         }else if(id == R.id.action_salir){
             DialogConfirmacion();
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
+
+    /*
+    @Override
+    public void onSetDatosInput(Dto datos) {
+        //Toast.makeText(this, "Código: "+datos.getCodigo(), Toast.LENGTH_SHORT).show();
+    }*/
+
 
     private void DialogConfirmacion(){
         //startActivity(new Intent(getApplicationContext(),MainActivity.class));
@@ -343,6 +366,7 @@ public class MainActivity extends AppCompatActivity {
         });
         dialogo.show();
     }
+
 
     //Creación de HILOS
     void Hilo(){
@@ -370,12 +394,12 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 
+
     private void demora(){
         try{
             Thread.sleep(1000);
         }catch (InterruptedException e){}
     }
-
 
     public String getSharedCodigo(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("profeGamez", MODE_PRIVATE);

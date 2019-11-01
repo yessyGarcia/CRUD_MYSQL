@@ -1,7 +1,6 @@
 package com.example.crud_msql;
 
 public class Productos {
-
     int codigo;
     String descripcion;
     double precio;
@@ -9,12 +8,14 @@ public class Productos {
 
     public Productos() {
     }
+
     public Productos(int codigo, String descripcion, double precio, String imagen) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.imagen = imagen;
     }
+
     public int getCodigo() {
         return codigo;
     }

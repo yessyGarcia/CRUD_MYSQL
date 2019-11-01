@@ -45,7 +45,6 @@ public class Consulta_RecyclerView extends AppCompatActivity {
 
 
     private void loadProductos() {
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
                     @Override
