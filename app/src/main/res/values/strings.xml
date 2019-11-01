@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CRUD_MSQL</string>
+    <string name="action_settings">Settings</string>
+</resources>
