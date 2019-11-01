@@ -13,5 +13,4 @@ public class Config {
     public static final String urlConsultaDescripcion = "http://mjgl.com.sv/mysqlcrud/buscarArticulosDescripcion.php";  //Busquedas por descripción.
     public static final String urlConsultaAllArticulos = "http://mjgl.com.sv/mysqlcrud/buscarArticulos.php";            //Devuelve todos los registros de la tabla MySQL.
 
-
 }
