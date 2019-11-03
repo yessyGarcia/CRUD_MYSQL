@@ -7,7 +7,7 @@
         android:gradientRadius="0"
         android:centerX="35%"
         android:centerY="50%"
-        android:centerColor="#47A891"
+        android:centerColor="#D34519"
         android:startColor="#E8E8E8"
         android:endColor="#FCFAFF"
         android:type="radial"
@@ -24,6 +24,6 @@
         />
     <stroke
         android:width="3dp"
-        android:color="#878787"
+        android:color="#160303"
         />
 </shape>
