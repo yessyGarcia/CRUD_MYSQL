@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#4F7FA3"
+    android:background="#FFFF"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
@@ -18,7 +18,7 @@
         android:fontFamily="serif-monospace"
         android:text="CRUD ~ MYSQL\nJAVA-ANDROID"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="#000"
         android:textSize="26dp"
         android:textStyle="bold" />
 
@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingrese el código"
+                android:textColorHint="#000"
                 android:inputType="number"
                 android:background="@drawable/estiloedittext"
                 android:shadowRadius="5"
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingrese la descripción del artículo"
+                android:textColorHint="#000"
                 android:layout_marginRight="12dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="20dp"
@@ -74,6 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingrese el precio del artículo"
+                android:textColorHint="#000"
                 android:layout_marginRight="12dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="20dp"
